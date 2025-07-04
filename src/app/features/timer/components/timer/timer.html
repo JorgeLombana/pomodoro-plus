@@ -1,0 +1,12 @@
+<div class="timer-container">
+
+  <div class="timer-display">{{ formattedTime() }}</div>
+
+  <div class="timer-controls">
+    <button class="timer-button" (click)="handleTimerClick()">
+      {{ buttonText() }}
+    </button>
+    <button class="timer-button" (click)="timerStore.reset()">Reset</button>
+  </div>
+
+</div>
