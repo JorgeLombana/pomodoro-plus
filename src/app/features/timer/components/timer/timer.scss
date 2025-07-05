@@ -1,55 +1,144 @@
+// Variables
+$color-primary: #57cc02;
+$color-primary-light: #56cc0275;
+$color-primary-dark: #56a800;
+$color-primary-hover: #5ddb03;
+$color-accent: #ff6b6b;
+$color-border: #e2e2e2;
+$color-text-muted: rgb(145, 145, 145);
+$color-white: #fff;
+
+// Host styles
 :host {
   min-height: 100%;
   min-width: 100%;
-  // border: 1px solid red;
-  padding: 5%;
+  padding: 4%;
+  display: block;
 }
+
+// Timer Container
 .timer-container {
   width: 600px;
-  height: 600px;
-  // border: 1px solid grey;
-  background-color: #56cc021a;
+  height: 500px;
   margin-inline: auto;
   border-radius: 12px;
-
+  border: 2px solid $color-border;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
+// Body Container
+.body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+// Tabs
+.tabs-container {
+  display: flex;
+  min-width: 100%;
+  height: 46px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tab {
+  border-bottom: 2px solid $color-border;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-text-muted;
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-bottom-color: $color-accent;
+
+    h2 {
+      color: $color-accent;
+    }
+  }
+
+  &-active {
+    border-bottom-color: $color-accent;
+
+    h2 {
+      color: $color-accent;
+    }
+  }
+}
+
+// Timer Display
 .timer-display {
-  background-color: #56cc0275;
-  width: 300px;
-  height: 300px;
+  position: relative;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 4rem;
   font-weight: 600;
-  color: white;
+  color: $color-white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  &::after {
+    content: "";
+    background-color: #7ed323;
+    position: absolute;
+    border-radius: 50%;
+    width: 95%;
+    height: 95%;
+  }
+}
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
 }
 
+// Controls
 .timer-controls {
-  margin-top: 10px;
+  margin-top: 2rem;
   display: flex;
-  gap: 10px;
-}
+  gap: 1rem;
 
-button {
-  height: 46px;
-  width: 120px;
-  border-radius: 12px;
-  padding-inline: 20px;
-  border-bottom: 4px solid #56a800;
-  background-color: #57cc02;
-  color: white;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #5ddb03;
+  button {
+    height: 46px;
+    min-width: 120px;
+    border-radius: 12px;
+    padding-inline: 1.25rem;
+    border-bottom: 4px solid $color-primary-dark;
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $color-primary-hover;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
 }

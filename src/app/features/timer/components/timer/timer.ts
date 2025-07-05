@@ -1,6 +1,7 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimerStore } from '../../data-access/timer-store';
+import { TimerType } from '../../data-access/timer.types';
 
 @Component({
   selector: 'app-timer',
@@ -12,7 +13,16 @@ import { TimerStore } from '../../data-access/timer-store';
 export class TimerComponent {
   readonly timerStore = inject(TimerStore);
   readonly isRunning = this.timerStore.isRunning;
+  readonly progress = this.timerStore.percent;
   readonly buttonText = computed(() => (this.isRunning() ? 'Pause' : 'Start'));
+
+  readonly tabs: { label: string; type: TimerType }[] = [
+    { label: 'Pomodoro', type: 'pomodoro' },
+    { label: 'Short break', type: 'shortBreak' },
+    { label: 'Long break', type: 'longBreak' },
+  ];
+
+  activeTab = signal<TimerType>('pomodoro');
 
   readonly formattedTime = computed(() => {
     const timeLeft = this.timerStore.timeLeft();
@@ -29,5 +39,9 @@ export class TimerComponent {
     } else {
       this.timerStore.start();
     }
+  }
+  setActiveTab(tab: TimerType) {
+    this.activeTab.set(tab);
+    this.timerStore.setTimerType(tab);
   }
 }

@@ -1,12 +1,41 @@
 <div class="timer-container">
-
-  <div class="timer-display">{{ formattedTime() }}</div>
-
-  <div class="timer-controls">
-    <button class="timer-button" (click)="handleTimerClick()">
-      {{ buttonText() }}
-    </button>
-    <button class="timer-button" (click)="timerStore.reset()">Reset</button>
+  <div class="tabs-container">
+    @for (tab of tabs; track tab.type) {
+    <div
+      class="tab"
+      (click)="setActiveTab(tab.type)"
+      [ngClass]="{ 'tab-active': tab.type == activeTab() }"
+    >
+      <h2>{{ tab.label }}</h2>
+    </div>
+    }
   </div>
+  <div class="body-container">
+    <div
+      class="timer-display"
+      [ngStyle]="{
+        background:
+          'conic-gradient(' +
+          '#57cc02' +
+          ' 0% ' +
+          progress() +
+          '%, ' +
+          '#56cc0275' +
+          ' ' +
+          progress() +
+          '% 100%)'
+      }"
+    >
+      <div class="progress-ring">
+        <div class="timer-text">{{ formattedTime() }}</div>
+      </div>
+    </div>
 
+    <div class="timer-controls">
+      <button class="timer-button" (click)="handleTimerClick()">
+        {{ buttonText() }}
+      </button>
+      <button class="timer-button" (click)="timerStore.reset()">Reset</button>
+    </div>
+  </div>
 </div>
