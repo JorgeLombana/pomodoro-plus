@@ -5,6 +5,13 @@ export const routes: Routes = [
   {
     path: '',
     component: Layout,
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import(`./features/dashboard/dashboard`).then((c) => c.Dashboard),
+      },
+    ],
   },
   {
     path: '**',

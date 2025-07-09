@@ -1,10 +1,10 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimerStore } from '../../data-access/timer-store';
-import { TimerType } from '../../data-access/timer.types';
+import { TimerStore } from './store/timer-store';
+import { TimerType } from './models/timer.types';
 
 @Component({
-  selector: 'app-timer',
+  selector: 'pp-timer',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './timer.html',

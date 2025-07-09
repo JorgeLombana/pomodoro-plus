@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { interval, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { TimerState, TimerType } from './timer.types';
+import { TimerState, TimerType } from '../models/timer.types';
 
 @Injectable({ providedIn: 'root' })
 export class TimerStore {

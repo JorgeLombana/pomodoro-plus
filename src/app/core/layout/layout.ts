@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TimerComponent } from '../../features/timer/components/timer/timer';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'pomo-plus-layout',
-  imports: [TimerComponent],
+  selector: 'pp-layout',
+  imports: [RouterOutlet],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })

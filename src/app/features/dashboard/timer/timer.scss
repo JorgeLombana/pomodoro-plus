@@ -18,8 +18,8 @@ $color-white: #fff;
 
 // Timer Container
 .timer-container {
-  width: 600px;
-  height: 500px;
+  width: 450px;
+  height: auto;
   margin-inline: auto;
   border-radius: 12px;
   border: 2px solid $color-border;
@@ -34,7 +34,14 @@ $color-white: #fff;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
   flex: 1;
+  gap: 15px;
+}
+
+.tomato-ghost {
+  filter: grayscale(100%) brightness(1.5);
+  opacity: 0.2;
 }
 
 // Tabs
@@ -111,12 +118,26 @@ $color-white: #fff;
   z-index: 1;
   text-align: center;
 }
+.pomodoro-count {
+  // margin-top: 1.5rem;
+  height: 46px;
+  min-width: 100%;
+  border-radius: 12px;
+  padding-inline: 1.25rem;
+  border-bottom: 4px solid #57a8004d;
+  background-color: #57a8003f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+}
 
 // Controls
 .timer-controls {
-  margin-top: 2rem;
+  // margin-top: 1.5rem;
   display: flex;
-  gap: 1rem;
+  width: 100%;
+  justify-content: space-around;
 
   button {
     height: 46px;
@@ -128,7 +149,7 @@ $color-white: #fff;
     color: $color-white;
     font-weight: 800;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
 
